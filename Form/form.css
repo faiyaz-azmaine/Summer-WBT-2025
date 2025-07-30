@@ -1,0 +1,48 @@
+body{
+background-color: rgb(255, 230, 225);
+}
+form{
+margin-left: 30px;
+}
+.form-group{
+display: flex;
+align-content: center;
+margin: 20px;
+}
+
+.form-group label{
+flex-basis: 450px;
+text-align: right;
+margin-right: 10px;
+font-weight: bold;
+}
+div{
+text-align: left;
+}
+
+.form-group {
+display: flex;
+flex-wrap: wrap;
+align-items: center;
+margin: 20px;
+}
+
+
+.head a{
+text-decoration: none;
+color: blue;
+margin: 10px;
+}
+
+#submit{
+text-align: center;
+}
+h2{
+color: red;
+margin-bottom:10px ;
+}
+h3{display: inline;
+color: red;}
+.smallbox{
+width: 60px;
+}
