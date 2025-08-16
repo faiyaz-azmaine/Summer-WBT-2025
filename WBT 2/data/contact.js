@@ -2,9 +2,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const form = document.getElementById("contactForm");
 
     form.addEventListener("submit", function (e) {
-        e.preventDefault(); // prevent refresh
+        e.preventDefault();
 
-        // Collect form data
         const data = {
             fname: document.getElementById("fname").value,
             lname: document.getElementById("lname").value,
@@ -15,11 +14,10 @@ document.addEventListener("DOMContentLoaded", function () {
             schedule: document.querySelector('input[name="schedule"]:checked')?.value || "Not selected"
         };
 
-        // Save into localStorage
-        localStorage.setItem("contactData", JSON.stringify(data));
-        console.log("✅ Saved Data:", data);
 
-        // Redirect to details page (inside /html/)
+        localStorage.setItem("contactData", JSON.stringify(data));
+        console.log("Saved Data:", data);
+
         window.location.href = "showdetails.html";
     });
 });

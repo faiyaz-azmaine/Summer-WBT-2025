@@ -3,7 +3,7 @@
 
 <head>
     <title>Submitted Details</title>
-    <link rel="stylesheet" href="../css/contact.css">
+
     <script>
         window.onload = function () {
             const username = prompt("Enter Username:");
@@ -14,7 +14,7 @@
 
             if (username === validUser && password === validPass) {
                 const data = JSON.parse(localStorage.getItem("contactData"));
-                console.log("📥 Loaded Data:", data);
+                console.log("Submitted Data:", data);
 
                 if (data) {
                     document.getElementById("details").innerHTML = `
@@ -31,7 +31,7 @@
                     document.getElementById("details").innerHTML = "<p>No data found.</p>";
                 }
             } else {
-                document.getElementById("details").innerHTML = "<h2>Access Denied ❌</h2>";
+                document.getElementById("details").innerHTML = "<h2>Access Denied (Wrong username or password) </h2>";
             }
         }
     </script>
