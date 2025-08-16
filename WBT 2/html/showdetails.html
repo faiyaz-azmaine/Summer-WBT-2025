@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Submitted Details</title>
+    <link rel="stylesheet" href="../css/contact.css">
+    <script>
+        window.onload = function () {
+            const username = prompt("Enter Username:");
+            const password = prompt("Enter Password:");
+
+            const validUser = "admin";
+            const validPass = "1234";
+
+            if (username === validUser && password === validPass) {
+                const data = JSON.parse(localStorage.getItem("contactData"));
+                console.log("📥 Loaded Data:", data);
+
+                if (data) {
+                    document.getElementById("details").innerHTML = `
+                        <h2>Contact Details</h2>
+                        <p><b>First Name:</b> ${data.fname}</p>
+                        <p><b>Last Name:</b> ${data.lname}</p>
+                        <p><b>Email:</b> ${data.email}</p>
+                        <p><b>Birthday:</b> ${data.birthday}</p>
+                        <p><b>Gender:</b> ${data.gender}</p>
+                        <p><b>Meeting Purpose:</b> ${data.purpose}</p>
+                        <p><b>Meeting Schedule:</b> ${data.schedule}</p>
+                    `;
+                } else {
+                    document.getElementById("details").innerHTML = "<p>No data found.</p>";
+                }
+            } else {
+                document.getElementById("details").innerHTML = "<h2>Access Denied ❌</h2>";
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div id="details"></div>
+</body>
+
+</html>
