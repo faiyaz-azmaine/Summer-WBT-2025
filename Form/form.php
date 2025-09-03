@@ -1,9 +1,129 @@
+
+<?php
+
+$firstname = $lastname = $company = $address1 = $address2 = $city = $state = $zip = $country = $fax = $mail = $amount = "";
+$firstnameErr = $lastnameErr = $address1Err =$address2Err= $companyErr = $cityErr = $stateErr = $zipErr = $countryErr = $mailErr = $amountErr = "";
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    
+    function test_input($data) {
+        $data = trim($data);
+        $data = stripslashes($data);
+        $data = htmlspecialchars($data);
+        return $data;
+    }
+
+   
+    if (empty($_POST["firstname"])) {
+        $firstnameErr = "First Name is required";
+    } else {
+        $firstname = test_input($_POST["firstname"]);
+
+          if (!preg_match("/^[a-zA-Z ]*$/", $firstname)) {
+        $firstnameErr = "Only letters and white space allowed";
+       }
+    }
+
+    if (empty($_POST["lastname"])) {
+        $lastnameErr = "Last Name is required";
+    } else {
+        $lastname = test_input($_POST["lastname"]);
+          if (!preg_match("/^[a-zA-Z ]*$/", $lastname)) {
+        $lastnameErr = "Only letters allowed";
+       }
+    }
+
+    if (empty($_POST["address1"])) {
+        $address1Err = "Address is required";
+    } else {
+        $address1 = test_input($_POST["address1"]);
+            if (!preg_match("/^[a-zA-Z ]*$/", $address1)) {
+        $address1Err = "Only letters allowed";
+       }
+    }
+    }
+
+    if (empty($_POST["city"])) {
+        $cityErr = "City feild is required";
+    } else {
+        $city = test_input($_POST["city"]);
+         if (!preg_match("/^[a-zA-Z ]*$/", $city)) {
+        $cityErr = "Only letters allowed";
+       }
+        
+    }
+
+    if (empty($_POST["State"])) {
+        $stateErr = "State feild is required";
+    } else {
+        $state = test_input($_POST["State"]);
+          if (!preg_match("/^[a-zA-Z ]*$/", $state)) {
+        $stateErr = "Only letters allowed";
+       }
+    }
+
+    if (empty($_POST["zip"])) {
+        $zipErr = "Zipcode is required";
+    } else {
+        $zip = test_input($_POST["zip"]);
+        if (!preg_match("/^[0-9]$/", $zip)) {
+            $zipErr = "Invalid Zipcode";
+        }
+    }
+
+    if (empty($_POST["Country"])) {
+        $countryErr = "Country is required";
+    } else {
+        $country = test_input($_POST["Country"]);
+            if (!preg_match("/^[a-zA-Z ]*$/", $country)) {
+        $countryErr = "Only letters allowed";
+       }
+    }
+
+    if (empty($_POST["mail"])) {
+        $mailErr = "Email is required";
+    } else {
+        $mail = test_input($_POST["mail"]);
+        if (!filter_var($mail, FILTER_VALIDATE_EMAIL)) {
+            $mailErr = "Invalid email";
+        }
+    }
+
+     if (empty($_POST["Amount"]) && empty($_POST["amount"])) {
+        $amountErr = "Donation amount is required";
+    } else {
+        if (!empty($_POST["Amount"]) && $_POST["Amount"] != "Other") {
+            $amount = test_input($_POST["Amount"]);
+        } elseif (!empty($_POST["amount"])) {
+           
+            if (!is_numeric($amount) || $amount <= 0) {
+                $amountErr = "Enter a valid donation amount";
+            }
+             $amount = test_input($_POST["amount"]);
+        }
+    }
+
+   
+
+
+?>
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 
 
 <head>
     <title>Document</title>
-    <link rel="stylesheet" href="/form.css">
+   <link rel="stylesheet" href="form.css">
+
+
 </head>
 
 <body>
@@ -17,33 +137,49 @@
     </div>
 
     <div class="all">
-        <form method="get">
+        <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
 
             <h2>Donor Information</h2><br>
 
-            <div class="form-group">
-                <label for="firstname"> First Name <h3>*</h3></label>
-                <input type="text" id="firstname" required>
+           <div class="form-group">
+             <label for="firstname">First Name <span style="color:red">*</span></label>
+             <input type="text" name="firstname" value="<?php echo $firstname; ?>">
+            <span class="error"><?php echo $firstnameErr; ?></span>
+
             </div>
 
+
+
+<br><br>
+
+
             <div class="form-group">
-                <label for="lastname">Last Name<h3>*</h3></label>
-                <input type="text" id="lastname" required>
+             <label for="lastname">Last Name <span style="color:red">*</span></label>
+             <input type="text" id="lastname" name="lastname" value="<?php echo $lastname; ?>">
+              <span class="error"><?php echo $lastnameErr;?></span>
+            </div>
+            <br><br>
             </div>
 
             <div class="form-group">
                 <label for="company">Company</label>
                 <input type="text" id="company">
+                <span class="error">* <?php echo $companyErr;?></span>
+<br><br>
             </div>
 
             <div class="form-group">
                 <label for="address1">Address 1<h3>*</h3></label>
                 <input type="text" id="address1" required>
+                <span class="error">* <?php echo $address1Err;?></span>
+<br><br>
             </div>
 
             <div class="form-group">
                 <label for="address2">Address 2</label>
                 <input type="text" id="address2">
+                <span class="error">* <?php echo $address2Err;?></span>
+
             </div>
 
             <div class="form-group">
@@ -229,3 +365,4 @@
 </body>
 
 </html>
+
