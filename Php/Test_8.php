@@ -1,7 +1,7 @@
 <?php
 $principal = 1000;
-$rate = 5; // in %
-$time = 2; // in years
+$rate = 5; 
+$time = 2;
 
 $si = ($principal * $rate * $time) / 100;
 
