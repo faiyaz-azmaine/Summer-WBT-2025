@@ -1,0 +1,156 @@
+/* Reset & Global */
+* {
+box-sizing: border-box;
+}
+
+body {
+margin: 0;
+font-family: Arial, Helvetica, sans-serif;
+background: skyblue;
+}
+
+a {
+color: #0066cc;
+text-decoration: none;
+}
+
+/* Layout Containers */
+.container {
+max-width: 900px;
+margin: 24px auto;
+background: #fff;
+border: 1px solid #cfcfcf;
+}
+
+.header,
+.footer {
+padding: 16px;
+border-bottom: 1px solid #cfcfcf;
+}
+
+.footer {
+border-top: 1px solid #cfcfcf;
+border-bottom: none;
+text-align: center;
+color: #555;
+}
+
+/* Branding */
+.brand {
+display: flex;
+align-items: center;
+gap: 10px;
+font-weight: 700;
+font-size: 22px;
+}
+
+.brand .x {
+font-size: 28px;
+}
+
+.logo {
+width: 28px;
+height: 28px;
+background: blue;
+display: inline-block;
+border-radius: 2px;
+}
+
+/* Navigation */
+.topnav {
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
+
+.topnav .links a {
+margin-left: 12px;
+color: green;
+}
+
+/* Hero & Cards */
+.hero {
+padding: 24px;
+min-height: 160px;
+border: 1px solid #cfcfcf;
+margin: 16px;
+}
+
+.card {
+margin: 16px;
+padding: 16px;
+border: 1px solid #cfcfcf;
+background: #fcfcfc;
+}
+
+/* Forms */
+.form-row {
+display: flex;
+align-items: center;
+margin: 8px 0;
+}
+
+.form-row label {
+width: 160px;
+display: inline-block;
+}
+
+.form-row input[type="text"],
+.form-row input[type="password"],
+.form-row input[type="email"],
+.form-row input[type="date"] {
+width: 280px;
+padding: 6px;
+}
+
+input[type="submit"],
+button,
+.btn {
+padding: 8px 14px;
+border: 1px solid #999;
+background: #f4f4f4;
+cursor: pointer;
+}
+
+
+.grid {
+display: grid;
+grid-template-columns: 220px 1fr;
+gap: 12px;
+padding: 0 16px 16px;
+}
+
+
+.sidebar {
+margin-left: 16px;
+padding: 8px 0 16px;
+}
+
+.sidebar ul {
+margin: 0 0 0 16px;
+padding: 0;
+}
+
+.sidebar a {
+text-decoration: none;
+}
+
+
+.small {
+font-size: 12px;
+color: #666;
+}
+
+.avatar {
+width: 120px;
+height: 120px;
+background: #eee;
+border-radius: 2px;
+display: block;
+}
+
+.caption {
+margin-bottom: 10px;
+font-weight: bold;
+color: #333;
+}
